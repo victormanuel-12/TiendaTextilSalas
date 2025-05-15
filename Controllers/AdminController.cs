@@ -229,6 +229,9 @@ namespace proyectoTienda.Controllers
     [HttpPost]
     public async Task<IActionResult> AgregaProducto(ProductoCategoriaViewModel viewModel)
     {
+      var gitHubToken = _configuration["GitHub:Token"];
+      var repo = _configuration["GitHub:Repo"];
+
       try
       {
         var imagen = Request.Form.Files.FirstOrDefault(f => f.Name == "Producto.ImagenURL");
