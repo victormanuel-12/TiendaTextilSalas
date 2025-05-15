@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 
     <link rel="stylesheet" href="~/proyectoTienda.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/carrito.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
         <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/LayoutHomeLogin.css" asp-append-version="true" />
     <style>
        
 
@@ -32,6 +32,36 @@
                 </button>
 
                 <a class="navbar-brand logo" asp-area="" asp-controller="Home" asp-action="Index">TEXTIL SALAS</a>
+
+                <div class="d-lg-none ms-auto d-flex align-items-center navbar-nav-icons-mobile">
+                    <a asp-controller="Carrito" asp-action="Carrito" class="nav-link px-2" aria-label="Carrito de compras">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path
+                                d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+                            ></path>
+                        </svg>
+                    </a>
+                    <partial name="_LoginPartial" />
+                </div>
+
+                <div class="d-none d-lg-flex align-items-center flex-grow-1">
+                     
+
+                    
+
+                    
+
+                    
+                </div>
             </div>
         </nav>
 
@@ -50,6 +80,11 @@
                     aria-label="Close"
                 ></button>
             </div>
+            <div class="offcanvas-body">
+                
+
+                
+            </div>
         </div>
     </header>
     
@@ -59,56 +94,11 @@
         </main>
     </div>
 
-    <footer>
-      <div class="container">
-        <div class="row gy-4">
-          <div class="col-12 col-lg-4 footer-col">
-            <a href="index.html" class="footer-logo">TEXTIL SALAS</a>
-            <p>
-              Tenemos ropa que se adapta a tu estilo y que te enorgullecerá
-              llevar. Para mujer y hombre.
-            </p>
-          </div>
-          <div class="col-6 col-lg-2 footer-col">
-            <h4>Empresa</h4>
-            <ul>
-              <li>Empresa dedicada a la venta de prendas de vestir</li>
-              
-            </ul>
-          </div>
-          <div class="col-6 col-lg-3 footer-col">
-            <h4>Ayuda</h4>
-            <ul>
-              <li><a href="#">Soporte al Cliente</a></li>
-            </ul>
-          </div>
-          <div class="col-12 col-lg-3 footer-col">
-            <h4>Contacto</h4>
-            <div class="contact-block">
-              <div class="contact-block-text">
-                <p>Atención al cliente:<br />987645321</p>
-              </div>
-              <div class="whatsapp-icon">
-                <a
-                  href="https://wa.me/51987645321"
-                  target="_blank"
-                  aria-label="WhatsApp"
-                >
-                  <i class="fab fa-whatsapp"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          Shop.co © 2000-2025, All Rights Reserved
-        </div>
-      </div>
-    </footer>
     
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+   
 </body>
 </html>

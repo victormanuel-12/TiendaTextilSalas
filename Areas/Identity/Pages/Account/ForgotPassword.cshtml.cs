@@ -75,8 +75,8 @@ namespace proyectoTienda.Areas.Identity.Pages.Account
             Input.Email,
             "Reset Password",
             $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
-
-        return RedirectToPage("./ForgotPasswordConfirmation");
+        TempData["SuccessMessage"] = "Se ha enviado un correo para restablecer la contraseña.";
+        return Page();
       }
 
       return Page();

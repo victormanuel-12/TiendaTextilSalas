@@ -1,0 +1,73 @@
+﻿@page
+@model ConfirmEmailModel
+@{
+    ViewData["Title"] = "Confirmar correo";
+    Layout = "_Layoutt";
+}
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+    href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+/>
+<link rel="stylesheet" href="~/css/confirmEmail.css" asp-append-version="true"/>
+
+<main class="login-container">
+    <div class="login-card">
+        <div class="brand-section">
+            <div class="brand-icon">
+                <i class="fas fa-tint"></i>
+            </div>
+            <h1 class="login-title">
+                Textil <span class="text-primary">Salas</span>
+            </h1>
+            <p class="login-subtitle">Envolviendo tu vida con suavidad y frescura</p>
+        </div>
+
+        <div class="confirmation-content">
+            <div class="status-icon">
+                @if (Model.StatusMessage.Contains("Thank you") || Model.StatusMessage.Contains("Gracias"))
+                {
+                    <i class="fas fa-check-circle success-icon"></i>
+                }
+                else
+                {
+                    <i class="fas fa-exclamation-circle error-icon"></i>
+                }
+            </div>
+            <h2 class="confirmation-title">@ViewData["Title"]</h2>
+            <div class="status-message @(Model.StatusMessage.Contains("Thank you") || Model.StatusMessage.Contains("Gracias") ? "success-message" : "error-message")">
+                @Model.StatusMessage
+            </div>
+            
+            <div class="confirmation-actions">
+                @if (Model.StatusMessage.Contains("Thank you") || Model.StatusMessage.Contains("Gracias"))
+                {
+                    <a href="/Identity/Account/Login" class="confirmation-btn">
+                        Iniciar sesión <i class="fas fa-arrow-right"></i>
+                    </a>
+                }
+                else
+                {
+                    <a href="/Identity/Account/Register" class="confirmation-btn secondary-btn">
+                        Volver al registro <i class="fas fa-arrow-right"></i>
+                    </a>
+                }
+                
+                
+            </div>
+        </div>
+    </div>
+    <div class="login-image">
+        <div class="bubble bubble-1"></div>
+        <div class="bubble bubble-2"></div>
+        <div class="bubble bubble-3"></div>
+        <div class="image-overlay">
+            <div class="image-content">
+                <h2 class="image-title">Gracias por unirte a nuestra familia</h2>
+                <p class="image-description">Estamos emocionados de tenerte con nosotros. Prepárate para descubrir el verdadero confort.</p>
+            </div>
+        </div>
+    </div>
+</main>
