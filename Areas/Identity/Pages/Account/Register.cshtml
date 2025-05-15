@@ -21,7 +21,7 @@
                 <i class="fas fa-tint"></i>
             </div>
             <h1 class="login-title">
-                Soft <span class="text-primary">Comfort</span>
+                Textil <span class="text-primary">Salas</span>
             </h1>
             <p class="login-subtitle">Envolviendo tu vida con suavidad y frescura</p>
         </div>
@@ -88,8 +88,43 @@
             </div>
         </div>
     </div>
-</main>
+</main><div id="confirmationModal" class="modal @(TempData["ShowConfirmationModal"] != null ? "show" : "")">
+    <div class="modal-content">
+        <span class="close-button" onclick="closeModal()">&times;</span>
+        <i class="fas fa-check-circle modal-icon"></i>
+        <h2>¡Registro exitoso!</h2>
+        <p>Por favor revise su correo electrónico para confirmar su cuenta y comenzar a disfrutar de todos los beneficios.</p>
+        <div class="modal-buttons">
+            <button class="modal-btn modal-btn-primary" onclick="closeModal()">Entendido</button>
+        </div>
+    </div>
+</div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        function closeModal() {
+            const modal = document.getElementById("confirmationModal");
+            modal.classList.add("hide");
+            setTimeout(() => {
+                modal.classList.remove("show");
+                modal.classList.remove("hide");
+                modal.style.display = "none";
+            }, 500);
+        }
+
+        // Mostrar automáticamente el modal si tiene la clase "show" y cerrarlo después de 4 segundos
+        window.onload = function() {
+            const modal = document.getElementById("confirmationModal");
+            if (modal.classList.contains("show")) {
+                modal.style.display = "flex";
+                
+                // Cierra automáticamente el modal después de 4 segundos
+                setTimeout(() => {
+                    closeModal();
+                }, 6000);
+            }
+        }
+    </script>
 }
