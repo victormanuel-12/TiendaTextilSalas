@@ -1,0 +1,108 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Iniciar sesión";
+    Layout = "_LayoutHomeLogin";
+}
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+    href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+/>
+<link rel="stylesheet" href="~/css/iniciarSesion.css" asp-append-version="true"/>
+
+<main class="login-container">
+    <div class="login-card">
+        <div class="brand-section">
+            <div class="brand-icon">
+                <i class="fas fa-tint"></i>
+            </div>
+            <h1 class="login-title">
+                Soft <span class="text-primary">Comfort</span>
+            </h1>
+            <p class="login-subtitle">Envolviendo tu vida con suavidad y frescura</p>
+        </div>
+
+        <div class="login-form">
+            <h2 class="form-title">¡Bienvenido de nuevo!</h2>
+            <p class="form-description">Inicia sesión para acceder a tu cuenta</p>
+            
+            <form id="account" method="post">
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                
+                <div class="form-group">
+                    <label asp-for="Input.Email" class="form-label">Correo electrónico</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-envelope input-icon"></i>
+                        <input 
+                            asp-for="Input.Email" 
+                            class="form-control" 
+                            autocomplete="username" 
+                            aria-required="true" 
+                            placeholder="tu@correo.com" 
+                        />
+                    </div>
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Input.Password" class="form-label">Contraseña</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-lock input-icon"></i>
+                        <input 
+                            asp-for="Input.Password" 
+                            class="form-control" 
+                            autocomplete="current-password" 
+                            aria-required="true" 
+                            placeholder="Contraseña" 
+                            type="password"
+                        />
+                    </div>
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+
+                <div class="remember-me">
+                    <label asp-for="Input.RememberMe" class="form-label">
+                        <input class="form-check-input" asp-for="Input.RememberMe" />
+                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                    </label>
+                </div>
+
+                <button id="login-submit" type="submit" class="login-btn">
+                    Iniciar Sesión <i class="fas fa-arrow-right"></i>
+                </button>
+
+                <div class="login-links">
+                    <p class="register-link">
+                        ¿No tienes una cuenta? <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Regístrate aquí</a>
+                    </p>
+                    <p>
+                        <a id="forgot-password" asp-page="./ForgotPassword">¿Olvidaste tu contraseña?</a>
+                    </p>
+                    <p>
+                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Reenviar correo de confirmación</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="login-image">
+        <div class="bubble bubble-1"></div>
+        <div class="bubble bubble-2"></div>
+        <div class="bubble bubble-3"></div>
+        <div class="image-overlay">
+            <div class="image-content">
+                <h2 class="image-title">El confort te espera</h2>
+                <p class="image-description">Accede a tu cuenta y disfruta de nuestros productos premium</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

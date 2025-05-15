@@ -1,0 +1,249 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.breadcrumb a {
+  color: #333;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb .arrow {
+  margin: 0 10px;
+}
+
+.product-card {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.product-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.form-left {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.form-control:hover {
+  border-color: #aaa;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #0066cc;
+  box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.2);
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.product-image {
+  background-color: #f5f5f5;
+  padding: 15px;
+  margin-bottom: 20px;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.product-image img {
+  max-width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+}
+
+.image-upload {
+  border: 2px dashed #ccc;
+  border-radius: 4px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.image-upload:hover {
+  border-color: #0066cc;
+  background-color: rgba(0, 102, 204, 0.05);
+}
+
+.image-upload svg {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+  color: #666;
+}
+
+.image-upload p {
+  color: #666;
+  font-size: 14px;
+}
+
+.image-preview {
+  max-width: 100%;
+  max-height: 200px;
+  display: none;
+  margin-top: 10px;
+}
+
+.file-info {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}
+
+.file-thumbnail {
+  width: 40px;
+  height: 40px;
+  background-color: #ddd;
+  margin-right: 10px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.file-name {
+  flex-grow: 1;
+  font-size: 14px;
+}
+
+.file-progress {
+  flex-grow: 1;
+  height: 6px;
+  background-color: #e0e0e0;
+  border-radius: 3px;
+  margin-top: 5px;
+  overflow: hidden;
+}
+
+.file-progress-bar {
+  height: 100%;
+  background-color: #0066cc;
+  width: 100%;
+}
+
+.file-check {
+  color: #0066cc;
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.btn-primary {
+  background-color: #0066cc;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0055aa;
+}
+
+.btn-danger {
+  background-color: #1a4971;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #143a5a;
+}
+
+.btn-secondary {
+  background-color: #f5f5f5;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+.btn-secondary:hover {
+  background-color: #e5e5e5;
+}
+
+#fileInput {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .product-form {
+    grid-template-columns: 1fr;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}

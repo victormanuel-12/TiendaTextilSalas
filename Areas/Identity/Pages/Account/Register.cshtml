@@ -1,0 +1,95 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = "_LayoutHomeLogin";
+}
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+    href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+/>
+<link rel="stylesheet" href="~/css/iniciarSesion.css" asp-append-version="true"/>
+
+
+<main class="login-container">
+    <div class="login-card">
+        <div class="brand-section">
+            <div class="brand-icon">
+                <i class="fas fa-tint"></i>
+            </div>
+            <h1 class="login-title">
+                Soft <span class="text-primary">Comfort</span>
+            </h1>
+            <p class="login-subtitle">Envolviendo tu vida con suavidad y frescura</p>
+        </div>
+
+        <div class="login-form">
+            <h2 class="form-title">¡Bienvenido a nuestra familia!</h2>
+            <p class="form-description">Crea tu cuenta y descubre el verdadero significado de la suavidad</p>
+
+            <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+                <div class="form-group">
+                    <label asp-for="Input.Email" class="form-label">Correo electrónico</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-envelope input-icon"></i>
+                        <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="tu@correo.com" />
+                    </div>
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Input.Password" class="form-label">Contraseña</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-lock input-icon"></i>
+                        <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Contraseña" />
+                    </div>
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Input.ConfirmPassword" class="form-label">Confirmar contraseña</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-lock input-icon"></i>
+                        <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Confirmar contraseña" />
+                    </div>
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+
+                <div class="benefits-section">
+                    <p class="benefits-title">Beneficios de unirte a nosotros:</p>
+                    <ul class="benefits-list">
+                       
+                        <li><i class="fas fa-check"></i> Envío gratuito en tu primera compra</li>
+                    </ul>
+                </div>
+
+                <button id="registerSubmit" type="submit" class="login-btn">Crear mi cuenta <i class="fas fa-arrow-right"></i></button>
+                
+                <div class="login-links">
+                    <p>¿Ya tienes una cuenta? <a href="/Identity/Account/Login">Iniciar sesión</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="login-image">
+        <div class="bubble bubble-1"></div>
+        <div class="bubble bubble-2"></div>
+        <div class="bubble bubble-3"></div>
+        <div class="image-overlay">
+            <div class="image-content">
+                <h2 class="image-title">Suavidad que acaricia tu piel</h2>
+                <p class="image-description">Descubre nuestra colección de toallas y batas diseñadas para brindarte el máximo confort</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

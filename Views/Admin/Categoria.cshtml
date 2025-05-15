@@ -1,0 +1,230 @@
+@using proyectoTienda.ViewModel
+@{
+    Layout = null;
+}
+@model List<CategoriaViewModel>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración de Categorías</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/Admincategoria.css"> <!-- Asume que guardarás los estilos integrados en este archivo -->
+</head>
+<body>
+    <!-- Botón para abrir menú en móviles -->
+    <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Overlay para cuando el menú está abierto en móvil -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+    
+    <!-- Barra lateral -->
+    <div class="sidebar" id="sidebar">
+        <div class="logo">SHOP.CO</div>
+        <div class="nav-items">
+            <a class="nav-item" asp-area="" asp-controller="Admin" asp-action="HomeAdmin">
+                <i class="fas fa-chart-pie"></i>
+                <span>Dashboard</span>
+            </a>
+            <a class="nav-item active" asp-area="" asp-controller="Admin" asp-action="Categoria">
+                <i class="fas fa-tags"></i>
+                <span>Categorías</span>
+            </a>
+            <a class="nav-item" asp-area="" asp-controller="Admin" asp-action="AgregarCategoria">
+                <i class="fas fa-plus"></i>
+                <span>Agregar Categoría</span>
+            </a>
+            <a class="nav-item" asp-area="" asp-controller="Admin" asp-action="Productos">
+                <i class="fas fa-tshirt"></i>
+                <span>Productos</span>
+            </a>
+            <a class="nav-item" asp-area="" asp-controller="Admin" asp-action="AgregarProducto">
+                <i class="fas fa-plus-circle"></i>
+                <span>Agregar Producto</span>
+            </a>
+            <a class="nav-item" asp-area="" asp-controller="Admin" asp-action="ListaOrdenes">
+                <i class="fas fa-clipboard-list"></i>
+                <span>Pedidos</span>
+            </a>
+        </div>
+        <!-- Login Partial integrado en la barra lateral -->
+        <div class="login-container">
+            <partial name="_LoginPartial" />
+        </div>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="main-content">
+        <div class="content-box">
+            <!-- Nuevo diseño de tabla basado en la imagen -->
+            <div class="card">
+                <div class="table-header">
+                    <h5 class="mb-0">Listado de Requisiciones (Productos)</h5>
+                    <a asp-controller="Admin" asp-action="AgregarCategoria" class="add-category-link">
+                        <button class="add-button">
+                            <i class="fas fa-plus"></i>
+                            Agregar Categoría
+                        </button>
+                    </a>
+                </div>
+                
+                <div class="card-body p-0">
+                    <div class="d-flex justify-content-end p-2">
+                        <div class="search-box" style="width: 200px;">
+                            <input type="text" class="form-control" placeholder="Search...">
+                            <i class="fas fa-search search-icon"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table class="table table-hover mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Categoría <i class="fas fa-sort ms-1"></i></th>
+                                    <th>Descripcion <i class="fas fa-sort ms-1"></i></th>
+                                    <th>Productos <i class="fas fa-sort ms-1"></i></th>
+                                    <th>Fecha <i class="fas fa-sort ms-1"></i></th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null && Model.Count > 0)
+                                {
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.Categoria.Nombre</td>
+                                            <td>@item.Categoria.Descripcion</td>
+                                            <td>@item.ProductosCount</td>
+                                            <td>@item.Categoria.FechaCreacion?.ToString("dd/MM/yyyy")</td>
+                                            <td>
+    <div class="action-buttons">
+        <a asp-controller="Admin" asp-action="EditarCategoria" asp-route-id="@item.Categoria.IDCategoria" 
+           class="action-btn btn-edit" title="Editar categoría">
+            <i class="fas fa-edit"></i>
+        </a>
+        <button class="action-btn btn-delete" title="Eliminar categoría"
+                data-id="@item.Categoria.IDCategoria" 
+                data-name="@item.Categoria.Nombre" 
+                data-bs-toggle="modal" 
+                data-bs-target="#deleteModal">
+            <i class="fas fa-trash"></i>
+        </button>
+    </div>
+</td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="4">No hay categorías disponibles.</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="pagination-container">
+                        
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination pagination-sm mb-0">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de confirmación de eliminación -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Confirmar Eliminación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Estás seguro de que deseas eliminar la categoría <strong id="category-name"></strong>?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <form id="delete-form" method="post">
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Llenar el modal con la categoría seleccionada
+        var deleteButtons = document.querySelectorAll('.action-btn.delete');
+        deleteButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                var categoryId = button.getAttribute('data-id');
+                var categoryName = button.getAttribute('data-name');
+                document.getElementById('category-name').textContent = categoryName;
+                document.getElementById('delete-form').action = '/Admin/EliminarCategoria/' + categoryId;
+            });
+        });
+
+        // Script para controlar el menú responsivo
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const sidebar = document.getElementById('sidebar');
+            const menuOverlay = document.getElementById('menuOverlay');
+            
+            menuToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+                menuOverlay.classList.toggle('active');
+            });
+            
+            // Cerrar menú al hacer clic en el overlay
+            menuOverlay.addEventListener('click', function() {
+                sidebar.classList.remove('active');
+                menuOverlay.classList.remove('active');
+            });
+            
+            // Cerrar menú al hacer clic en un enlace en dispositivos móviles
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(function(item) {
+                item.addEventListener('click', function() {
+                    if (window.innerWidth <= 991) {
+                        sidebar.classList.remove('active');
+                        menuOverlay.classList.remove('active');
+                    }
+                });
+            });
+            
+            // Ajustar al cambiar tamaño de ventana
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 991) {
+                    sidebar.classList.remove('active');
+                    menuOverlay.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
