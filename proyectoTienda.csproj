@@ -5,6 +5,8 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>aspnet-proyectoTienda-03b65b5e-4ed8-4834-885c-8e469dba1fa8</UserSecretsId>
+    <TargetFramework>net8.0</TargetFramework>
+  <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
   <ItemGroup>

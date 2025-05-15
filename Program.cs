@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using proyectoTienda.Data;
 using proyectoTienda.Servicios;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,13 +24,18 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<ICarritoService, CarritoService>();
-builder.Services.AddTransient<IEmailSender, EmailSender>();
+
 
 builder.Configuration
     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
     .AddEnvironmentVariables(); // 
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<ICarritoService, CarritoService>();
+// ...existing code...
+builder.Services.AddTransient<IEmailSender, EmailSender>();
+
+// ...existing code...
+
 builder.Services.AddControllers();
 builder.Services.AddHttpClient(); // <- Aquí
 
@@ -48,7 +54,10 @@ else
 }
 app.UseSession();
 
-
+// En Program.cs, después de builder.Build()
+var smtpSettings = app.Services.GetRequiredService<IConfiguration>().GetSection("SmtpSettings");
+Console.WriteLine($"SMTP Config: {smtpSettings["Host"]}:{smtpSettings["Port"]}");
+Console.WriteLine($"Usuario: {smtpSettings["UserName"]}");
 app.UseRouting();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
