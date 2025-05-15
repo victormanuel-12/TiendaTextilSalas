@@ -106,6 +106,8 @@ namespace proyectoTienda.Controllers
     [HttpPost]
     public async Task<IActionResult> EliminarCategoria(int id)
     {
+      _logger.LogInformation("Intentando eliminar categoría con ID: {CategoryId}", id);
+
       try
       {
         var categoria = await _context.Categorias.FindAsync(id);
