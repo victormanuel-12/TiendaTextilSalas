@@ -23,7 +23,9 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<ICarritoService, CarritoService>();
-
+builder.Configuration
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+    .AddEnvironmentVariables(); // 
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<ICarritoService, CarritoService>();
 builder.Services.AddControllers();
