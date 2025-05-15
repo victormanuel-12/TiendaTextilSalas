@@ -256,8 +256,7 @@ namespace proyectoTienda.Controllers
         string nombreArchivo = Guid.NewGuid().ToString() + Path.GetExtension(imagen.FileName);
 
         // Leer token y repo desde appsettings.json
-        var gitHubToken = _configuration["GitHub:Token"];
-        var repo = _configuration["GitHub:Repo"];
+
 
         if (string.IsNullOrEmpty(gitHubToken) || string.IsNullOrEmpty(repo))
         {
