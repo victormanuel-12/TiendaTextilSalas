@@ -1,6 +1,6 @@
 bin/
 obj/
-
+appsettings.json
 *.db-wal
 *.db-shm
 .ionide/
