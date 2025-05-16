@@ -267,7 +267,7 @@ ul {
 /* Hero */
 .hero {
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url("https://lilianasanmiguel.com.ar/wp-content/uploads/2023/05/batas-toallas-hoteles.jpg");
+    url(/wwwroot/img/batas-toallas-hoteles.jpg);
   background-size: cover;
   background-position: center;
   color: var(--color-white);

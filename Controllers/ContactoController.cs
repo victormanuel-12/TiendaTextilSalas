@@ -9,6 +9,7 @@ using proyectoTienda.Data;
 using proyectoTienda.Models.Model;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
+using proyectoTienda.Models;
 
 
 namespace proyectoTienda.Controllers
@@ -16,10 +17,10 @@ namespace proyectoTienda.Controllers
     public class ContactoController : Controller
     {
         private readonly ILogger<ContactoController> _logger;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly ApplicationDbContext _context;
 
-        public ContactoController(ILogger<ContactoController> logger,UserManager<IdentityUser> userManager, ApplicationDbContext context)
+        public ContactoController(ILogger<ContactoController> logger,UserManager<ApplicationUser> userManager, ApplicationDbContext context)
         {
             _logger = logger;
             _userManager = userManager;

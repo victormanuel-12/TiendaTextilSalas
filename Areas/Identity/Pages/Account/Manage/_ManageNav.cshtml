@@ -1,4 +1,5 @@
-@inject SignInManager<IdentityUser> SignInManager
+@using proyectoTienda.Models
+@inject SignInManager<ApplicationUser> SignInManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }
@@ -6,20 +7,41 @@
     <div class="card-body p-2">
         <ul class="nav nav-pills flex-column gap-2">
             <li class="nav-item">
-                <a class="nav-link rounded-pill @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">
+                <a class="nav-link rounded-pill @ManageNavPages.IndexNavClass(ViewContext)" asp-page="./Index">
                     <i class="bi bi-person-fill me-2"></i>Perfil
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link rounded-pill @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-page="./Email">
+                <a class="nav-link rounded-pill @ManageNavPages.NombreNavClass(ViewContext)" asp-page="./Nombre">
+                    <i class="bi bi-card-text me-2"></i>Nombre
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link rounded-pill @ManageNavPages.DireccionNavClass(ViewContext)" asp-page="./Direccion">
+                    <i class="bi bi-geo-alt-fill me-2"></i>Dirección
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link rounded-pill @ManageNavPages.DniNavClass(ViewContext)" asp-page="./Dni">
+                    <i class="bi bi-person-badge-fill me-2"></i>DNI
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link rounded-pill @ManageNavPages.NumeroNavClass(ViewContext)" asp-page="./Numero">
+                    <i class="bi bi-telephone-fill me-2"></i>Teléfono
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link rounded-pill @ManageNavPages.EmailNavClass(ViewContext)" asp-page="./Email">
                     <i class="bi bi-envelope-fill me-2"></i>Correo
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link rounded-pill @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">
+                <a class="nav-link rounded-pill @ManageNavPages.ChangePasswordNavClass(ViewContext)" asp-page="./ChangePassword">
                     <i class="bi bi-shield-lock-fill me-2"></i>Contraseña
                 </a>
             </li>
+
             @if (hasExternalLogins)
             {
                 <li id="external-logins" class="nav-item">
@@ -28,18 +50,6 @@
                     </a>
                 </li>
             }
-            <!--
-            <li class="nav-item">
-                <a class="nav-link rounded-pill @ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)" id="two-factor" asp-page="./TwoFactorAuthentication">
-                    <i class="bi bi-lock-fill me-2"></i>Autenticación en dos pasos
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link rounded-pill @ManageNavPages.PersonalDataNavClass(ViewContext)" id="personal-data" asp-page="./PersonalData">
-                    <i class="bi bi-file-earmark-person-fill me-2"></i>Datos personales
-                </a>
-            </li>
-            -->
         </ul>
     </div>
 </div>

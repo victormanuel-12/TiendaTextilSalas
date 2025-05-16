@@ -5,115 +5,37 @@
 using System;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace  proyectoTienda.Areas.Identity.Pages.Account.Manage
+namespace proyectoTienda.Areas.Identity.Pages.Account.Manage
 {
-    /// <summary>
-    ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-    ///     directly from your code. This API may change or be removed in future releases.
-    /// </summary>
     public static class ManageNavPages
     {
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         public static string Index => "Index";
-
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
+        public static string Nombre => "Nombre";
+        public static string Direccion => "Direccion";
+        public static string Dni => "Dni";
+        public static string Numero => "Numero";
         public static string Email => "Email";
-
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         public static string ChangePassword => "ChangePassword";
-
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         public static string DownloadPersonalData => "DownloadPersonalData";
-
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         public static string DeletePersonalData => "DeletePersonalData";
-
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         public static string ExternalLogins => "ExternalLogins";
-
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         public static string PersonalData => "PersonalData";
-
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         public static string TwoFactorAuthentication => "TwoFactorAuthentication";
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
-        public static string IndexNavClass(ViewContext viewContext) => PageNavClass(viewContext, Index);
+        public static string IndexNavClass(ViewContext vc) => PageNavClass(vc, Index);
+        public static string NombreNavClass(ViewContext vc) => PageNavClass(vc, Nombre);
+        public static string DireccionNavClass(ViewContext vc) => PageNavClass(vc, Direccion);
+        public static string DniNavClass(ViewContext vc) => PageNavClass(vc, Dni);
+        public static string NumeroNavClass(ViewContext vc) => PageNavClass(vc, Numero);
+        public static string EmailNavClass(ViewContext vc) => PageNavClass(vc, Email);
+        public static string ChangePasswordNavClass(ViewContext vc) => PageNavClass(vc, ChangePassword);
+        public static string DownloadPersonalDataNavClass(ViewContext vc) => PageNavClass(vc, DownloadPersonalData);
+        public static string DeletePersonalDataNavClass(ViewContext vc) => PageNavClass(vc, DeletePersonalData);
+        public static string ExternalLoginsNavClass(ViewContext vc) => PageNavClass(vc, ExternalLogins);
+        public static string PersonalDataNavClass(ViewContext vc) => PageNavClass(vc, PersonalData);
+        public static string TwoFactorAuthenticationNavClass(ViewContext vc) => PageNavClass(vc, TwoFactorAuthentication);
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
-        public static string EmailNavClass(ViewContext viewContext) => PageNavClass(viewContext, Email);
-
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
-        public static string ChangePasswordNavClass(ViewContext viewContext) => PageNavClass(viewContext, ChangePassword);
-
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
-        public static string DownloadPersonalDataNavClass(ViewContext viewContext) => PageNavClass(viewContext, DownloadPersonalData);
-
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
-        public static string DeletePersonalDataNavClass(ViewContext viewContext) => PageNavClass(viewContext, DeletePersonalData);
-
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
-        public static string ExternalLoginsNavClass(ViewContext viewContext) => PageNavClass(viewContext, ExternalLogins);
-
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
-        public static string PersonalDataNavClass(ViewContext viewContext) => PageNavClass(viewContext, PersonalData);
-
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
-        public static string TwoFactorAuthenticationNavClass(ViewContext viewContext) => PageNavClass(viewContext, TwoFactorAuthentication);
-
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
-        public static string PageNavClass(ViewContext viewContext, string page)
+        private static string PageNavClass(ViewContext viewContext, string page)
         {
             var activePage = viewContext.ViewData["ActivePage"] as string
                 ?? System.IO.Path.GetFileNameWithoutExtension(viewContext.ActionDescriptor.DisplayName);

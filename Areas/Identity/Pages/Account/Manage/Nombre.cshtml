@@ -1,0 +1,29 @@
+@page
+@model proyectoTienda.Areas.Identity.Pages.Account.Manage.NombreModel
+@{
+    ViewData["Title"] = "Nombre";
+    ViewData["ActivePage"] = "Nombre";
+}
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card shadow-sm rounded-3">
+      <div class="card-header bg-white py-3">
+        <h3 class="h5 mb-0">Nombre</h3>
+      </div>
+      <div class="card-body p-4">
+        <partial name="_StatusMessage" for="StatusMessage" />
+        <form method="post">
+          <div class="form-floating mb-4">
+            <input asp-for="Input.FullName" class="form-control" placeholder="Nombre completo" />
+            <label asp-for="Input.FullName">Nombre completo</label>
+            <span asp-validation-for="Input.FullName" class="text-danger"></span>
+          </div>
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

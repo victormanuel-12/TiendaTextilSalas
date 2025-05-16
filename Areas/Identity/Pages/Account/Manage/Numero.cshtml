@@ -1,0 +1,29 @@
+@page
+@model proyectoTienda.Areas.Identity.Pages.Account.Manage.NumeroModel
+@{
+    ViewData["Title"] = "Teléfono";
+    ViewData["ActivePage"] = "Numero";
+}
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card shadow-sm rounded-3">
+      <div class="card-header bg-white py-3">
+        <h3 class="h5 mb-0">Teléfono</h3>
+      </div>
+      <div class="card-body p-4">
+        <partial name="_StatusMessage" for="StatusMessage" />
+        <form method="post">
+          <div class="form-floating mb-4">
+            <input asp-for="Input.PhoneNumber" class="form-control" placeholder="Teléfono" />
+            <label asp-for="Input.PhoneNumber">Teléfono</label>
+            <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+          </div>
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

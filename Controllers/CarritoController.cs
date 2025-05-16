@@ -20,13 +20,13 @@ namespace proyectoTienda.Controllers
   public class CarritoController : Controller
   {
     private readonly ILogger<CarritoController> _logger;
-    private readonly UserManager<IdentityUser> _userManager;
+    private readonly UserManager<ApplicationUser> _userManager;
     private readonly ApplicationDbContext _context;
     private readonly ICarritoService _carritoService;
 
     public CarritoController(
         ILogger<CarritoController> logger,
-        UserManager<IdentityUser> userManager,
+        UserManager<ApplicationUser> userManager,
         ApplicationDbContext context,
         ICarritoService carritoService) // Asegúrate de que esta dependencia esté siendo inyectada
     {

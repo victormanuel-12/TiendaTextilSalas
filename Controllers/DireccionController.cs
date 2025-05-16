@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Identity;
 using proyectoTienda.Session;
 using Microsoft.AspNetCore.Authorization;
 using System.Text.Json;
+using proyectoTienda.Models;
 
 namespace proyectoTienda.Controllers
 {
@@ -23,9 +24,9 @@ namespace proyectoTienda.Controllers
   {
     private readonly ILogger<DireccionController> _logger;
     private readonly ApplicationDbContext _context; // Ajusta según tu DbContext
-    private readonly UserManager<IdentityUser> _userManager;
+    private readonly UserManager<ApplicationUser> _userManager;
     public DireccionController(ILogger<DireccionController> logger, ApplicationDbContext context,
-    UserManager<IdentityUser> userManager)
+    UserManager<ApplicationUser> userManager)
     {
       _logger = logger;
       _context = context;

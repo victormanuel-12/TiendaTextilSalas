@@ -5,7 +5,7 @@ namespace proyectoTienda.Data;
 using proyectoTienda.Models.Model;
 using proyectoTienda.Models.Model.ubicacion;
 
-public class ApplicationDbContext : IdentityDbContext
+public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 {
   public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
       : base(options)

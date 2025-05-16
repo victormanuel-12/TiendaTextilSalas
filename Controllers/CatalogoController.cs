@@ -23,9 +23,9 @@ namespace proyectoTienda.Controllers
   {
     private readonly ILogger<CatalogoController> _logger;
     private readonly ApplicationDbContext _context;
-    private readonly UserManager<IdentityUser> _userManager;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public CatalogoController(ILogger<CatalogoController> logger, ApplicationDbContext context, UserManager<IdentityUser> userManager)
+    public CatalogoController(ILogger<CatalogoController> logger, ApplicationDbContext context, UserManager<ApplicationUser> userManager)
     {
       _logger = logger;
       _context = context;

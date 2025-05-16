@@ -29,10 +29,10 @@ namespace proyectoTienda.Controllers
   {
     private readonly ILogger<PagoController> _logger;
     private readonly ApplicationDbContext _context;
-    private readonly UserManager<IdentityUser> _userManager;
+    private readonly UserManager<ApplicationUser> _userManager;
     private readonly ICarritoService _carritoService;
 
-    public PagoController(ILogger<PagoController> logger, ApplicationDbContext context, UserManager<IdentityUser> userManager, ICarritoService carritoService)
+    public PagoController(ILogger<PagoController> logger, ApplicationDbContext context, UserManager<ApplicationUser> userManager, ICarritoService carritoService)
     {
       _logger = logger;
       _context = context;

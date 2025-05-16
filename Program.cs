@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using proyectoTienda.Data;
 using proyectoTienda.Servicios;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using proyectoTienda.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,14 +14,18 @@ builder.Services.AddSession(options =>
   options.Cookie.IsEssential = true;
 });
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlite(connectionString));
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+    
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-.AddRoles<IdentityRole>()
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
+{
+    options.SignIn.RequireConfirmedAccount = false;
+})
+.AddRoles<IdentityRole>() 
+.AddEntityFrameworkStores<ApplicationDbContext>();
+
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<ICarritoService, CarritoService>();
