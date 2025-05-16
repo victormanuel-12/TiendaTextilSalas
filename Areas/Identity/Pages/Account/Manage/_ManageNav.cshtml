@@ -1,4 +1,4 @@
-@using proyectoTienda.Models
+@using proyectoTienda.Models;
 @inject SignInManager<ApplicationUser> SignInManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
